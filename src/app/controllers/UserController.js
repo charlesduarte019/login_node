@@ -44,7 +44,7 @@ module.exports = {
             })
 
             const token = jwt.sign({ id: id }, authConfig.secret, {
-                expiresIn: 86400,
+                expiresIn: 1200,
             });
 
             return res.status(201).send({
