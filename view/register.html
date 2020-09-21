@@ -4,48 +4,31 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/config.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-
-  <h2>Login Form</h2>
-
-  <form action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
-
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Ex: yourmail@mail.com" name="psw" required>
-
-      <label for="whatsapp"><b>Whatsapp</b></label>
-      <input type="whatsapp" placeholder="Ex: +55(DDD)00000-0000" name="psw" required>
-
-      <label for="city"><b>City</b></label>
-      <input type="city" placeholder="Ex: your city " name="psw" required>
-
-      <label for="uf"><b>UF</b></label>
-      <input type="uf" placeholder="Ex: UF " name="psw" required>
-    </div>
-
-
-
-    <div class="square" style="background-color:#f1f1f1">
-      <button id="submit" type="submit" onclick="">Login</button>
-      <button type="button" class="cancelbtn">Cancel</button>
-    </div>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </form>
-
+  <h2 class="text">Registrar</h2>
+        <input id="username" type="text" placeholder="Nome" name="name"><br>
+        <input class="password" type="password" id="password" placeholder="Senha" name="senha">
+        <img class="image" onclick="mostrarOcultarSenha()" id="reveal"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" />
+        <input id="email" type="text" placeholder="Email" name="email"><br>
+        <input id="whatsapp" type="text" placeholder="Whatsapp" name="whatsapp"><br>
+        <input id="city" type="text" placeholder="Cidade" name="city"><br>
+        <input id="uf" type="text" placeholder="UF" name="uf"><br>
+        <button onclick="getData()">Submit</button>
 </body>
-
-<script src="./js/content.js"></script>
+<script src="./js/register.js"></script>
+<script>
+  function mostrarOcultarSenha() {
+    var senha = document.getElementById("senha");
+    if (senha.type == "password") {
+      senha.type = "text";
+    } else {
+      senha.type = "password";
+    }
+  }
+</script>
 
 </html>
