@@ -1,75 +1,66 @@
-var page = 1
-var search = ""
-var pagina = 'http://localhost:3000/market?page=' + page;
+function getData() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
 
-function getRequest() {
-  $.ajax({
-    type: 'get',
-    url: pagina,
-    dataType: 'json',
-    success: function (data) {
-      for (var i = 0; i < data.length; i++) {
-        var content = `
-    <div>
-    <a href="`+ data[i].id + `">
-    <img src="`+ data[i].filename + `">
-    </a>
-    <h2>`+ data[i].title + `</h2>
-    <p>`+ data[i].description + `</p>
-    <h3>R$`+ data[i].price + `</h3>
-    </div>
-  `;
-        $('#tbody').append(content);
-      }
-    },
-    statusCode: {
-      404: function () {
-        alert('page not found');
+  if (email === "") {
+    alert('Invalid email');
+  }
+  else if (password === "") {
+    alert('Invalid password');
+  }
+
+  else {
+    var data = {
+      "email": email,
+      "senha": password,
+    };
+    $.ajax({
+      url: "http://localhost:3000/users/auth",
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      dataType: 'json',
+      success: function (data) {
+        const result = data
+        console.log(result)
+
+        $.ajax
+        ({
+          url: "http://localhost:3000/projects",
+          type: "GET",
+          contentType: 'application/json',
+          dataType: 'json',
+          headers: {
+            "Authorization": "Bearer " + result.token
+          },
+          success: function () {
+            alert('Thanks for your comment!');
+          }
+        });
+
       },
+      statusCode: {
+        404: function () {
+          alert('Page not found');
+          window.location.reload(false);
+        },
 
-      400: function () {
-        alert('bad request');
-      },
+        400: function () {
+          alert('Wrong password');
+        },
 
-      500: () => {
-        alert('server error')
+        500: () => {
+          alert('Server error')
+          window.location.reload(false);
+        }
       }
-    }
-  })
+    });
+  }
 }
 
-function prevButton() {
-  if (page == 2) {
-    document.getElementById("prev").disabled = true;
-  }
-  else {
-    document.getElementById("next").disabled = false;
-  }
-  if (page > 1 & page <= 10) {
-    page = page - 1;
-    document.getElementById("tbody").innerHTML = ""
-    getRequest();
-  }
-}
+// document.location.href = 
 
-function nextButton() {
-  if (page == 8) {
-    document.getElementById("next").disabled = true;
-  }
-  else {
-    document.getElementById("prev").disabled = false;
-  }
-  if (page >= 1 & page < 9) {
-    page = page + 1;
-    document.getElementById("tbody").innerHTML = ""
-    getRequest();
-  }
-};
-
-
-
-
-var input = document.getElementById("valor");
+var input = document.getElementById("password");
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -77,42 +68,11 @@ input.addEventListener("keyup", function (event) {
   }
 });
 
-function capturar() {
-  search = document.getElementById('valor').value;
-
-  if (!search) {
-    window.location.reload(false);
-  }
-
-  else {
-    toString(pagina = 'http://localhost:3000/market/' + search,);
-      document.getElementById("tbody").innerHTML = "";
-    document.getElementById("next").disabled = true;
-    getRequest(); 
+function mostrarOcultarSenha() {
+  var senha = document.getElementById("password");
+  if (senha.type == "password") {
+    senha.type = "text";
+  } else {
+    senha.type = "password";
   }
 }
-
-
-
-function fruits() {
-  type = "fruit"
-  toString(pagina = 'http://localhost:3000/market/type/' + type,)
-  document.getElementById('tbody').innerHTML="";
-  getRequest();
-};
-
-function dairy() {
-  type = "dairy"
-  toString(pagina = 'http://localhost:3000/market/type/' + type,)
-  document.getElementById('tbody').innerHTML="";
-  getRequest();
-};
-
-function vegetable() {
-  type = "vegetable"
-  toString(pagina = 'http://localhost:3000/market/type/' + type,)
-  document.getElementById('tbody').innerHTML="";
-  getRequest();
-};
-
-// url: 'http://localhost:3000/market/type/' + type,
