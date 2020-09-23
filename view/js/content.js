@@ -34,7 +34,9 @@ function getData() {
             "Authorization": "Bearer " + result.token
           },
           success: function () {
-            alert('Thanks for your comment!');
+            var auth = JSON.stringify(result.token)
+            localStorage.setItem("auth", auth);
+            document.location.href = "./listUsers.html"
           }
         });
 
