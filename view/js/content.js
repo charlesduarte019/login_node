@@ -50,8 +50,7 @@ function getData() {
         },
 
         500: () => {
-          alert('Server error')
-          window.location.reload(false);
+          alert('Wrong email')
         }
       }
     });
@@ -61,6 +60,14 @@ function getData() {
 // document.location.href = 
 
 var input = document.getElementById("password");
+input.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("myBtn").click();
+  }
+});
+
+var input = document.getElementById("email");
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
