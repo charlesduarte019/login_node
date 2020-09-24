@@ -10,9 +10,10 @@ routes.post('/users', UserController.create);
 routes.post('/users/auth', UserController.auth);
 routes.put('/users/:id', UserController.update);
 routes.delete('/users/:id', UserController.delete);
+routes.get('/users/:id', UserController.profile);
 
+routes.get('/users', UserController.index);
 routes.use(authMiddleware);
 routes.get('/projects', ProjectController.work);
-routes.get('/users', UserController.index);
 
 module.exports = routes;

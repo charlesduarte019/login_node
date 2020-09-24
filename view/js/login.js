@@ -21,10 +21,11 @@ function getData() {
       data: JSON.stringify(data),
       dataType: 'json',
       success: function (data) {
-        var auth = JSON.stringify(data.token)
+        var auth = JSON.stringify(data.token);
+        var user = JSON.stringify(data.user);
         localStorage.setItem("auth", auth);
+        localStorage.setItem("user", user)
         document.location.href = "./listUsers.html"
-        console.log(data)
       },
       statusCode: {
         404: function () {
@@ -44,17 +45,7 @@ function getData() {
   }
 }
 
-// document.location.href = 
-
 var input = document.getElementById("password");
-input.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("myBtn").click();
-  }
-});
-
-var input = document.getElementById("email");
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();

@@ -12,10 +12,10 @@ module.exports = {
     async create(req, res, next) {
         try {
             const { name, senha, email, whatsapp, city, uf } = req.body;
-            
+
             const mail = await knex('users').select('email').where('email', email);
 
-            if(mail.length != 0 && email === mail[0].email) {
+            if (mail.length != 0 && email === mail[0].email) {
                 return res.status(400).send({ error: 'User already exist' })
             };
 
@@ -109,7 +109,7 @@ module.exports = {
             next(error)
         }
     },
-    
+
     async auth(req, res) {
         try {
             const { email, senha } = req.body;
@@ -132,9 +132,9 @@ module.exports = {
 
             user[0].password = undefined;
 
-             const token = jwt.sign({ id: user[0].id }, authConfig.secret, {
-                 expiresIn: 86400,
-             });
+            const token = jwt.sign({ id: user[0].id }, authConfig.secret, {
+                expiresIn: 86400,
+            });
 
             res.send({
                 user,
@@ -142,7 +142,20 @@ module.exports = {
             });
 
         } catch (error) {
-            res.status(500).send({ error: 'Internal error' })
+            res.status(500).send({ error: 'Internal error' });
+        }
+    },
+
+    async profile(req, res, next) {
+        try {
+            const { id } = req.params
+            const results = await knex('users')
+                .select('name', 'email', 'whatsapp', 'city', 'uf')
+                .where('id', id);
+            return res.json(results);
+        }
+        catch (error) {
+            next(error);
         }
     }
 }
