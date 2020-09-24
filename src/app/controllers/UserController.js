@@ -11,7 +11,7 @@ module.exports = {
 
     async create(req, res, next) {
         try {
-            const { name, senha, email, whatsapp, city, uf } = req.body;
+            const { name, senha, email, cellNumber, city, uf } = req.body;
 
             const mail = await knex('users').select('email').where('email', email);
 
@@ -36,7 +36,7 @@ module.exports = {
                 name,
                 password,
                 email,
-                whatsapp,
+                cellNumber,
                 city,
                 uf,
                 created_at,
@@ -62,7 +62,7 @@ module.exports = {
 
     async update(req, res, next) {
         try {
-            const { name, senha, email, whatsapp, city, uf } = req.body
+            const { name, senha, email, cellNumber, city, uf } = req.body
             const { id } = req.params
 
             const updated = new Date();
@@ -80,7 +80,7 @@ module.exports = {
                     name,
                     password,
                     email,
-                    whatsapp,
+                    cellNumber,
                     city,
                     uf,
                     updated_at
@@ -150,7 +150,7 @@ module.exports = {
         try {
             const { id } = req.params
             const results = await knex('users')
-                .select('name', 'email', 'whatsapp', 'city', 'uf')
+                .select('name', 'email', 'cellNumber', 'city', 'uf')
                 .where('id', id);
             return res.json(results);
         }

@@ -3,7 +3,7 @@ function getData() {
   var password = document.getElementById("password").value;
   var passConfirm = document.getElementById("passwordConfirmation").value;
   var email = document.getElementById("email").value;
-  var whatsapp = document.getElementById("whatsapp").value;
+  var cellNumber = document.getElementById("cellNumber").value;
   var city = document.getElementById("city").value;
   var uf = document.getElementById("uf").value;
   function validateEmail(email) {
@@ -31,7 +31,7 @@ function getData() {
       "name": username,
       "senha": password,
       "email": email,
-      "whatsapp": whatsapp,
+      "cellNumber": cellNumber,
       "city": city,
       "uf": uf
     };

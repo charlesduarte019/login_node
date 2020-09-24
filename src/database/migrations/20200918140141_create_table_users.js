@@ -5,7 +5,7 @@ exports.up = function (knex) {
         table.string('name').notNullable();
         table.string('password').notNullable();
         table.string('email').notNullable();
-        table.string('whatsapp').notNullable();
+        table.string('cellNumber').notNullable();
         table.string('city').notNullable();
         table.string('uf', 2).notNullable();
 
