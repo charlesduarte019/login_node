@@ -21,25 +21,10 @@ function getData() {
       data: JSON.stringify(data),
       dataType: 'json',
       success: function (data) {
-        const result = data
-        console.log(result)
-
-        $.ajax
-        ({
-          url: "http://localhost:3000/projects",
-          type: "GET",
-          contentType: 'application/json',
-          dataType: 'json',
-          headers: {
-            "Authorization": "Bearer " + result.token
-          },
-          success: function () {
-            var auth = JSON.stringify(result.token)
-            localStorage.setItem("auth", auth);
-            document.location.href = "./listUsers.html"
-          }
-        });
-
+        var auth = JSON.stringify(data.token)
+        localStorage.setItem("auth", auth);
+        document.location.href = "./listUsers.html"
+        console.log(data)
       },
       statusCode: {
         404: function () {

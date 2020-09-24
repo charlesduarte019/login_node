@@ -39,3 +39,8 @@ function carregarItens() {
         });
 
 }
+
+function logout() {
+    localStorage.setItem("auth", "");
+    document.location.href = "./login.html"
+}
