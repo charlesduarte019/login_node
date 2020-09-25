@@ -133,7 +133,7 @@ module.exports = {
             user[0].password = undefined;
 
             const token = jwt.sign({ id: user[0].id }, authConfig.secret, {
-                expiresIn: 86400,
+                expiresIn: 1200,
             });
 
             res.send({

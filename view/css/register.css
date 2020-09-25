@@ -10,11 +10,25 @@ body {
     background-image: url(https://wallpaperaccess.com/full/2413558.jpg);
 }
 
+.background img {
+    max-height: 97vh;
+}
+
+.registerPage {
+    background-color: #efefef;
+    max-height: 98vh;
+}
+
+.registerPage h2 {
+    text-align: center;
+    color: #505050;
+}
+
 input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width: 96%;
-    height: 10%;
+    width: 100%;
+    height: 8%;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
     border-radius: 1.5em;
@@ -27,7 +41,7 @@ input {
 button {
     box-sizing: border-box;
     width: 100%;
-    height: 3rem;
+    height: 4rem;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
     border-radius: 1.5em;
@@ -35,20 +49,17 @@ button {
     resize: none;
     outline: none;
     color: #898989;
+    font-size: 2rem;
 }
 
-#email {
-    width: 100%;
+#password {
+    width: 95%;
 }
 
 button:hover {
     background-color: #898989;
     color: #efefef;
     border: 1px solid #efefef;
-}
-
-#myBtn{
-    font-size: 1rem;
 }
 
 @media screen and (max-width: 300px) {}

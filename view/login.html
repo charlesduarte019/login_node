@@ -3,19 +3,24 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/config.css">
+  <link rel="stylesheet" href="./css/login.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <h2 class="text">Login</h2>
-  <input id="email" type="text" placeholder="Email"><br>
-  <input class="password" type="password" id="password" placeholder="Senha">
-  <img class="image" onclick="mostrarOcultarSenha()" id="reveal"
-    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" />
-  <br>
-  <button id="myBtn" onclick="getData()">Login</button>
-  <button onclick="window.location.href='./register.html'">Create User</button>
+  <div class="background">
+    <img src="https://wallpaperaccess.com/full/2413558.jpg" alt="" srcset="">
+  </div>
+  <div class="loginPage">
+    <h2 class="text">Login Page</h2>
+    <input id="email" type="text" placeholder="Email"><br>
+    <input class="password" type="password" id="password" placeholder="Senha">
+    <img onclick="mostrarOcultarSenha()" id="reveal"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" />
+    <br>
+    <button id="myBtn" onclick="getData()">Login</button>
+    <button onclick="window.location.href='./register.html'">Create User</button>
+  </div>
 </body>
 
 <script src="./js/login.js"></script>

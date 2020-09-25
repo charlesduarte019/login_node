@@ -10,6 +10,21 @@ body {
     background-image: url(https://wallpaperaccess.com/full/2413558.jpg);
 }
 
+.background img {
+    max-height: 97vh;
+}
+
+.loginPage {
+    background-color: #efefef;
+    max-height: 100vh;
+    padding-top: 10vh;
+}
+
+.loginPage h2 {
+    text-align: center;
+    color: #505050;
+}
+
 input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;

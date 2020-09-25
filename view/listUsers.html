@@ -1,24 +1,33 @@
 <!DOCTYPE HTML>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <!--jQuery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-        <!--Script-->
-        <script src="./js/users.js"></script>
-    </head>
 
-    <body onload="carregarItens()">
+<head>
+    <meta charset="UTF-8">
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <!--Script-->
+    <script src="./js/users.js"></script>
+</head>
+
+<body onload="carregarItens()">
+    <div class="projects">
+
+    </div>
+    <div class="user">
         <section>
             <h1>Aplication</h1>
             <h2></h2>
-            <ul id="listaTemp">           
+            <ul id="listaTemp">
             </ul>
         </section>
-        <button onclick="logout()">Logout</button>
-    </body>
+        <button id="saveUser" onclick="saveUser()" disabled>Save edit</button>
+        <button id="editUser" onclick="editUser()">Edit user</button>
+    </div>
+    <button onclick="logout()">Logout</button>
+</body>
+
 </html>

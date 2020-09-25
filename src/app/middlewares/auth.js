@@ -17,7 +17,6 @@ module.exports = (req, res, next) => {
 
     if (!/^Bearer$/i.test(scheme))
         return res.status(401).send({ error: 'Token malformatted' });
-    //Bearer (token initial)
 
     jwt.verify(token, authConfig.secret, (err, decoded) => {
         if (err) return res.status(401).send({ error: 'Token invalid' });
@@ -27,3 +26,4 @@ module.exports = (req, res, next) => {
     });
     return next();
 }
+//Bearer (token initial)
