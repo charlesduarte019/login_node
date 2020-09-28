@@ -3,7 +3,7 @@ profile = user[0].id;
 var auth = localStorage.getItem('auth');
 res = JSON.parse(auth);
 
-function carregarItens() {
+function carregarUser() {
     $.ajax
         ({
             url: "http://localhost:3000/users/" + profile + "",
@@ -193,14 +193,16 @@ function createProject() {
     <p>Title</p><input id="title" type="text">
     <p>Description</p><input id="description" type="text">
     <p>Date</p><input type="date" id="date">
-    <button id="createProject" onclick="saveProject()" disabled>Create project</button>
+    <button id="createProject" onclick="saveProject()">Create project</button>
     `
 }
 
 function saveProject() {
-    var title = document.getElementById("title").value
-    var description = document.getElementById("description").value
-    var date = document.getElementById("date").value
+    var user = JSON.parse(localStorage.getItem('user'));
+    var userId = user[0].id
+    var title = document.getElementById("title").value;
+    var description = document.getElementById("description").value;
+    var date = document.getElementById("date").value;
     if (title === "") {
         alert('Invalid title');
     }
@@ -213,6 +215,7 @@ function saveProject() {
 
     else {
         var data = {
+            "id": userId,
             "title": title,
             "description": description,
             "date": date
@@ -244,4 +247,64 @@ function saveProject() {
             }
         });
     }
+}
+
+function carregarProjetos() {
+    $.ajax
+        ({
+            url: "http://localhost:3000/projects/" + profile + "",
+            type: "GET",
+            contentType: 'application/json',
+            dataType: 'json',
+            headers: {
+                "Authorization": "Bearer " + res
+            },
+            error: function () {
+                $("body").html(`<style>
+                body {
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-align: center;
+                }
+                b {
+                    font-size: 25px;
+                }
+                </style>`+
+                    "<b>O servidor não conseguiu processar o pedido<b>" +
+                    "<br>" +
+                    "<button onclick=logout()>Back</button>"
+                );
+            },
+            success: function (retorno) {
+
+                $.each(retorno, function (i, res) {
+                    var item = `
+                    <div id=` + "req" + i + `>
+                        <p>Title</p><input id="title" type="text" value="`+ res.title + `" disabled>
+                        <p>Description</p><input id="description" type="text" value="`+ res.description + `" disabled>
+                        <p>Date</p><input id="date" type="text" value="`+ res.date + `" disabled>
+                    </div>`
+                    $("#listProjects").append(item);
+                });
+            },
+            statusCode: {
+                404: function () {
+                    alert('Page not found');
+                    window.location.reload(false);
+                },
+
+                401: function () {
+                    alert('Unathorized');
+                    document.location.href = "./login.html"
+                },
+
+                400: function () {
+                    alert('Wrong password');
+                },
+
+                500: () => {
+                    alert('Wrong email')
+                }
+            }
+        });
+
 }
