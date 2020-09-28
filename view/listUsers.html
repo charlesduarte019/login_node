@@ -10,25 +10,35 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <!--Script-->
-    <link rel="stylesheet" href="./css/config.css">
+    <link rel="stylesheet" href="./css/users.css">
     <script src="./js/users.js"></script>
 </head>
 
 <body onload="carregarItens()">
-    <div class="projects">
-
+    <div class="projects-page">
+        <div class="projects">
+            <header>
+                <h1>My projects</h1>
+                <button class="createProject" onclick="createProject()">Create project</button>
+            </header>
+            <section>
+                <ul id="listProjects">
+                </ul>
+            </section>
+        </div>
+        <div class="user">
+            <section>
+                <h2>Perfil</h2>
+                <ul id="userPerf">
+                </ul>
+            </section>
+            <div class="buttons">
+                <button id="saveUser" onclick="saveUser()" disabled>Save edit</button>
+                <button id="editUser" onclick="editUser()">Edit user</button>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
     </div>
-    <div class="user">
-        <section>
-            <h1>Aplication</h1>
-            <h2></h2>
-            <ul id="listaTemp">
-            </ul>
-        </section>
-        <button id="saveUser" onclick="saveUser()" disabled>Save edit</button>
-        <button id="editUser" onclick="editUser()">Edit user</button>
-    </div>
-    <button onclick="logout()">Logout</button>
 </body>
 
 </html>

@@ -22,24 +22,6 @@ function carregarItens() {
                 b {
                     font-size: 25px;
                 }
-                button {
-                    box-sizing: border-box;
-                    width: 100%;
-                    margin: 0 0 1em;
-                    padding: 1em 3em 1em 1.5em;
-                    border: 1px solid #cccccc;
-                    border-radius: 1.5em;
-                    background: #fff;
-                    resize: none;
-                    outline: none;
-                    color: #898989;
-                }
-                
-                button:hover {
-                    background-color: #898989;
-                    color: #efefef;
-                    border: 1px solid #efefef;
-                }
                 </style>`+
                     "<b>O servidor não conseguiu processar o pedido<b>" +
                     "<br>" +
@@ -61,10 +43,8 @@ function carregarItens() {
                         <p>City</p><input id="city" type="text" value="`+ res.city + `" disabled>
                         <p>UF</p><input id="uf" type="text" value="`+ res.uf + `" disabled>
                     </div>`
-                    $("#listaTemp").append(item);
+                    $("#userPerf").append(item);
                 });
-                $("h2").html("Carregado");
-
             },
             statusCode: {
                 404: function () {
@@ -205,5 +185,63 @@ function mostrarOcultarSenha() {
         senha.type = "text";
     } else {
         senha.type = "password";
+    }
+}
+
+function createProject() {
+    document.getElementById("listProjects").innerHTML = `
+    <p>Title</p><input id="title" type="text">
+    <p>Description</p><input id="description" type="text">
+    <p>Date</p><input type="date" id="date">
+    <button id="createProject" onclick="saveProject()" disabled>Create project</button>
+    `
+}
+
+function saveProject() {
+    var title = document.getElementById("title").value
+    var description = document.getElementById("description").value
+    var date = document.getElementById("date").value
+    if (title === "") {
+        alert('Invalid title');
+    }
+    else if (description === "") {
+        alert('Invalid description');
+    }
+    else if (date === "") {
+        alert('Invalid date');
+    }
+
+    else {
+        var data = {
+            "title": title,
+            "description": description,
+            "date": date
+        };
+        $.ajax({
+            url: "http://localhost:3000/projects",
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: () => {
+                alert('Project created');
+                window.location.reload(true);
+            },
+            dataType: 'json',
+            statusCode: {
+                404: function () {
+                    alert('Page not found');
+                    window.location.reload(false);
+                },
+
+                400: function () {
+                    alert('Error');
+                },
+
+                500: () => {
+                    alert('Server error')
+                    window.location.reload(false);
+                }
+            }
+        });
     }
 }

@@ -3,11 +3,14 @@ html {
 }
 
 body {
-    display: grid;
-    grid-template-columns: 60% 40%;
+    margin: 0 auto;
+}
+
+header {
+    display: grid!important;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     font-family: Arial, Helvetica, sans-serif;
-    max-height: 100vh;
-    background-image: url(https://wallpaperaccess.com/full/2413558.jpg);
+    height: 100vh;
 }
 
 .background img {
@@ -21,6 +24,7 @@ body {
 }
 
 .loginPage h2 {
+    font-size: 2rem;
     text-align: center;
     color: #505050;
 }
@@ -40,6 +44,7 @@ input {
 }
 
 button {
+    font-size: 1.5rem;
     box-sizing: border-box;
     width: 100%;
     height: 3rem;
@@ -63,7 +68,7 @@ button:hover {
 }
 
 #myBtn{
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 @media screen and (max-width: 300px) {}
