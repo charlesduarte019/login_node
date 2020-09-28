@@ -11,9 +11,14 @@ routes.post('/users', UserController.create);
 routes.post('/users/auth', UserController.auth);
 routes.delete('/users/:id', UserController.delete);
 
+routes.get('/projects', ProjectController.index);
+routes.post('/projects', ProjectController.create);
+routes.put('/projects/:id', ProjectController.update);
+routes.get('/projects/:id', ProjectController.profile);
+routes.delete('/projects/:id', ProjectController.delete);
+
 routes.use(authMiddleware);
 routes.put('/users/:id', UserController.update);
-routes.get('/projects', ProjectController.work);
 routes.get('/users/:id', UserController.profile);
 
 

@@ -123,8 +123,8 @@ module.exports = {
                 .select('*')
                 .where('email', email)
 
-            if (!user)
-                return res.status(400).json({ error: 'User not found' });
+            if (!user[0])
+                return res.status(400).send({ error: 'User not found' });
 
 
             if (!await (password === user[0].password))
