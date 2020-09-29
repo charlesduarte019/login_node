@@ -69,4 +69,10 @@ button:hover {
     background-color: #43f143!important;
 }
 
+#editUser img {
+    height: 1.5rem;
+    margin-left: 0;
+    padding: 0!important;
+}
+
 @media screen and (max-width: 300px) {}

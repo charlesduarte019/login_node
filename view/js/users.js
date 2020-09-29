@@ -36,7 +36,7 @@ function carregarUser() {
                         <p>Name</p><input id="name" type="text" value="`+ res.name + `" disabled>
                         <p>Password</p><input class="password" type="password" id="password" disabled>
                         <img disabled class="image" onclick="mostrarOcultarSenha()" id="reveal"
-                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" />
+                          src="./images/eye.svg"/>
                         <p>Password confirmation</p><input class="password" type="password" id="passwordConfirmation" disabled>                    
                         <p>Email</p><input id="email" type="text" value="`+ res.email + `" disabled>
                         <p>Cell number</p><input id="cellNumber" type="text" value="`+ res.cellNumber + `" disabled>
@@ -68,8 +68,6 @@ function carregarUser() {
         });
 
 }
-
-
 
 function saveUser() {
     var username = document.getElementById("name").value;
@@ -141,11 +139,6 @@ function saveUser() {
     }
 }
 
-
-
-
-
-
 function editUser() {
     if (document.getElementById("name").disabled === true) {
         document.getElementById("name").disabled = false;
@@ -169,7 +162,7 @@ function editUser() {
         document.getElementById("city").disabled = true;
         document.getElementById("uf").disabled = true;
         document.getElementById("saveUser").disabled = true;
-        document.getElementById("editUser").innerHTML = 'Edit user';
+        document.getElementById("editUser").innerHTML = '<img src="./images/pencil.svg">Edit';
     }
 }
 
@@ -278,11 +271,22 @@ function carregarProjetos() {
 
                 $.each(retorno, function (i, res) {
                     var item = `
-                    <div id=` + "req" + i + `>
-                        <p>Title</p><input id="title" type="text" value="`+ res.title + `" disabled>
-                        <p>Description</p><input id="description" type="text" value="`+ res.description + `" disabled>
-                        <p>Date</p><input id="date" type="text" value="`+ res.date + `" disabled>
-                    </div>`
+                    <div id="req"`+ i + `">
+                        <input id="project`+ i + `" type="text" value="` + res.project_id + `" hidden>
+                        <p>Title</p><input id="title`+ i + `" type="text" value="` + res.title + `" disabled>
+                        <p>Description</p><input id="description`+ i + `" type="text" value="` + res.description + `" disabled>
+                        <p>Date</p><input id="date`+ i + `" type="text" value="` + res.date + `" disabled>
+                        <div style="display: grid; grid-template-columns: auto auto auto;">
+                        <button id="saveProject`+ i + `" onclick="saveProject(id=` + i + `)" disabled>Save edit</button>
+                        <button id="deleteProject`+ i + `" onclick="deleteProject(id=` + i + `)" disabled>Delete project</button>
+                        <button id="editProject" onclick="editProject(id=`+ i + ` )"><img src="./images/pencil.svg"></button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>`
                     $("#listProjects").append(item);
                 });
             },
@@ -307,4 +311,55 @@ function carregarProjetos() {
             }
         });
 
+}
+
+function editProject(id) {
+    if (document.getElementById("saveProject" + id).disabled === true) {
+        document.getElementById("title" + id).disabled = false;
+        document.getElementById("description" + id).disabled = false;
+        document.getElementById("date" + id).disabled = false;
+        document.getElementById("saveProject" + id).disabled = false;
+        document.getElementById("deleteProject" + id).disabled = false;
+    }
+    else{
+        document.getElementById("title" + id).disabled = true;
+        document.getElementById("description" + id).disabled = true;
+        document.getElementById("date" + id).disabled = true;
+        document.getElementById("saveProject" + id).disabled = true;
+        document.getElementById("deleteProject" + id).disabled = true;
+    }
+}
+
+
+function deleteProject(id){
+    var project = document.getElementById("project" + id).value;
+    console.log(project)
+
+    $.ajax({
+        url: "http://localhost:3000/projects/" + project,
+        type: 'DELETE',
+        headers: {
+            "Authorization": "Bearer " + res
+        },
+        statusCode: {
+            200: function () {
+                alert('Project deleted');
+                window.location.reload(true);
+            },
+
+            404: function () {
+                alert('Page not found');
+                window.location.reload(false);
+            },
+
+            400: function () {
+                alert('Project error');
+            },
+
+            500: () => {
+                alert('Server error')
+                window.location.reload(false);
+            }
+        }
+    });
 }
