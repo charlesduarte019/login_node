@@ -117,7 +117,7 @@ function saveUser() {
             dataType: 'json',
             statusCode: {
                 200: function () {
-                    alert('User created');
+                    alert('User Updated');
                     window.location.reload(true);
                 },
 
@@ -187,6 +187,7 @@ function createProject() {
     <p>Description</p><input id="description" type="text">
     <p>Date</p><input type="date" id="date">
     <button id="createProject" onclick="saveProject()">Create project</button>
+    <button onclick="carregarProjetos()">Cancel</button>
     `
 }
 
@@ -243,6 +244,7 @@ function saveProject() {
 }
 
 function carregarProjetos() {
+    document.getElementById("listProjects").innerHTML = "";
     $.ajax
         ({
             url: "http://localhost:3000/projects/" + profile + "",
@@ -333,7 +335,6 @@ function editProject(id) {
 
 function deleteProject(id){
     var project = document.getElementById("project" + id).value;
-    console.log(project)
 
     $.ajax({
         url: "http://localhost:3000/projects/" + project,
