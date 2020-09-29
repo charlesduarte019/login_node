@@ -277,7 +277,7 @@ function carregarProjetos() {
                         <p>Description</p><input id="description`+ i + `" type="text" value="` + res.description + `" disabled>
                         <p>Date</p><input id="date`+ i + `" type="text" value="` + res.date + `" disabled>
                         <div style="display: grid; grid-template-columns: auto auto auto;">
-                        <button id="saveProject`+ i + `" onclick="saveProject(id=` + i + `)" disabled>Save edit</button>
+                        <button id="saveProject`+ i + `" onclick="updateProject(id=` + i + `)" disabled>Save edit</button>
                         <button id="deleteProject`+ i + `" onclick="deleteProject(id=` + i + `)" disabled>Delete project</button>
                         <button id="editProject" onclick="editProject(id=`+ i + ` )"><img src="./images/pencil.svg"></button>
                         </div>
@@ -362,4 +362,60 @@ function deleteProject(id){
             }
         }
     });
+}
+
+function updateProject(id){
+    var project = document.getElementById("project" + id).value;
+
+    var title = document.getElementById("title" + id).value
+    var description = document.getElementById("description" + id).value
+    var date = document.getElementById("date" + id).value
+
+    if (title === "") {
+        alert('Invalid title');
+    }
+    else if (description === "") {
+        alert('Insert one valid description');
+    }
+    else if (date === "") {
+        alert('Insert one valid date');
+    }
+
+    else {
+        var data = {
+            "title": title,
+            "description": description,
+            "date": date
+        };
+        $.ajax({
+            url: "http://localhost:3000/projects/" + project,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            headers: {
+                "Authorization": "Bearer " + res
+            },
+            dataType: 'json',
+            statusCode: {
+                200: function () {
+                    alert('Project updated');
+                    window.location.reload(true);
+                },
+
+                404: function () {
+                    alert('Request error');
+                    window.location.reload(false);
+                },
+
+                400: function () {
+                    alert('Project error');
+                },
+
+                500: () => {
+                    alert('Server error')
+                    window.location.reload(false);
+                }
+            }
+        });
+    }
 }
