@@ -110,6 +110,9 @@ function saveUser() {
             url: "http://localhost:3000/users/" + profile + "",
             type: 'PUT',
             contentType: 'application/json',
+            headers: {
+                "Authorization": "Bearer " + res
+            },
             data: JSON.stringify(data),
             headers: {
                 "Authorization": "Bearer " + res
@@ -218,6 +221,9 @@ function saveProject() {
             url: "http://localhost:3000/projects",
             type: 'POST',
             contentType: 'application/json',
+            headers: {
+                "Authorization": "Bearer " + res
+            },
             data: JSON.stringify(data),
             success: () => {
                 alert('Project created');
@@ -250,6 +256,9 @@ function carregarProjetos() {
             url: "http://localhost:3000/projects/" + profile + "",
             type: "GET",
             contentType: 'application/json',
+            headers: {
+                "Authorization": "Bearer " + res
+            },
             dataType: 'json',
             headers: {
                 "Authorization": "Bearer " + res
