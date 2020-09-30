@@ -104,3 +104,7 @@ input.addEventListener("keyup", function (event) {
     document.getElementById("myBtn").click();
   }
 });
+
+function cancelButton(){
+  document.location.href = "./login.html"
+}
