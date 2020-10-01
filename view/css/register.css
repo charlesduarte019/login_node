@@ -31,7 +31,7 @@ header {
 input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
     height: 6%;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
@@ -40,11 +40,12 @@ input {
     resize: none;
     outline: none;
     color: #898989;
+    margin-left: 5rem;
 }
 
 button {
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
     height: 4rem;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
@@ -54,10 +55,11 @@ button {
     outline: none;
     color: #898989;
     font-size: 2rem;
+    margin-left: 5rem;
 }
 
 #password {
-    width: 95%;
+    width: 85%;
 }
 
 button:hover {

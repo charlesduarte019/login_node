@@ -19,7 +19,7 @@ body {
     width: 100%;
 }
 
-.projects h1{
+.projects h1 {
     margin-left: 2rem;
 }
 
@@ -36,7 +36,7 @@ input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 96%;
-    height: 3rem;
+    height: 5rem;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
     border-radius: 1.5em;
@@ -54,19 +54,30 @@ button {
     background: #fff;
 }
 
-.buttons {
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
-
 button:hover {
     background-color: #898989;
     color: #efefef;
     border: 1px solid #efefef;
 }
 
+.buttons {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
 #saveUser:hover {
     background-color: #43f143!important;
+    color: black;
+}
+
+#saveProject0:hover {
+    background-color: #43f143!important;
+    color: black;
+}
+
+#deleteProject0:hover {
+    background-color: #e72222!important;
+    color: white;
 }
 
 #editUser img {

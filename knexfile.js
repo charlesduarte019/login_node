@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       user: 'root',
-      password: '1010',
+      password: 'maah1553',
       database: 'login',
       insecureAuth: true
     },

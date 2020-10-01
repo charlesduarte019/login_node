@@ -290,7 +290,7 @@ function carregarProjetos() {
                         <div style="display: grid; grid-template-columns: auto auto auto;">
                         <button id="saveProject`+ i + `" onclick="updateProject(id=` + i + `)" disabled>Save edit</button>
                         <button id="deleteProject`+ i + `" onclick="deleteProject(id=` + i + `)" disabled>Delete project</button>
-                        <button id="editProject" onclick="editProject(id=`+ i + ` )"><img src="./images/pencil.svg"></button>
+                        <button id="editProject" onclick="editProject(id=`+ i + ` )"><img id="pen`+ i +`" src="./images/pencil.svg"></button>
                         </div>
                     </div>
                     <br>
@@ -331,6 +331,7 @@ function editProject(id) {
         document.getElementById("date" + id).disabled = false;
         document.getElementById("saveProject" + id).disabled = false;
         document.getElementById("deleteProject" + id).disabled = false;
+        document.getElementById("pen" + id).src = "./images/pencil-alt.svg";
     }
     else{
         document.getElementById("title" + id).disabled = true;
@@ -338,6 +339,7 @@ function editProject(id) {
         document.getElementById("date" + id).disabled = true;
         document.getElementById("saveProject" + id).disabled = true;
         document.getElementById("deleteProject" + id).disabled = true;
+        document.getElementById("pen" + id).src = "./images/pencil.svg";
     }
 }
 

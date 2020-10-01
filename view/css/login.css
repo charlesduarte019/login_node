@@ -33,8 +33,8 @@ header {
 input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width: 96%;
-    height: 10%;
+    width: 90%;
+    height: 7%;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
     border-radius: 1.5em;
@@ -42,12 +42,13 @@ input {
     resize: none;
     outline: none;
     color: #898989;
+    margin-left: 4rem;
 }
 
 button {
     font-size: 1.8rem;
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
     height: 5rem;
     margin: 0 0 1em;
     border: 1px solid #cccccc;
@@ -56,10 +57,7 @@ button {
     resize: none;
     outline: none;
     color: #898989;
-}
-
-#email {
-    width: 100%;
+    margin-left: 4rem;
 }
 
 button:hover {
